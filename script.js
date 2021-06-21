@@ -2,7 +2,7 @@
 
 function getAverage(...number) {  
     const num = number.filter(Number.isInteger); 
-    return num.reduce((prev, item) =>  (prev+ item)) / num.length;  
+    return num.reduce((prev, item) =>  (prev + item)) / num.length;  
   }
    console.log(`getRandomArray(15, 1, 100) = ${getRandomArray(15, 1, 100)}`)
 
