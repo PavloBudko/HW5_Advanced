@@ -33,8 +33,8 @@ function getRandomArray(size, min, max) {
       return 'Не вірний формат' 
     } 
     let randomArray = [size]; 
-    for(let i=0; i<size; i++) 
-     randomArray[i]= Math.floor(Math.random()*(max-min)+min); 
+    for(let i = 0; i < size; i++) 
+     randomArray[i]= Math.floor(Math.random() * (max - min) + min); 
     return randomArray; 
    }
  console.log(`getAverage(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) = ${getAverage(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2)}`)
@@ -46,9 +46,9 @@ function getMedian(...numbers) {
     const num = numbers.sort((a, b) => a - b).filter(Number.isInteger); 
     let median = 0; 
     if (num.length % 2 === 0){ 
-      median = ((num[((num.length/2) -1)] + num[(num.length/2)])/2) 
+      median = ((num[((num.length / 2) - 1)] + num[(num.length / 2)]) / 2) 
     }else{ 
-      median = num[num.length/2 - 0.5] 
+      median = num[num.length / 2 - 0.5] 
     } 
     return median 
     }
