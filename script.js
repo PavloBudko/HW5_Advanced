@@ -136,3 +136,35 @@ function divideByThree(str) {
   console.log(`divideByThree ('Commander') = ${divideByThree('Commander')}`)
 
 //10.
+
+
+function generateCombinations(word) {
+  
+  function recursion(word) {
+  const letters = word.split('');
+  let combinations = [];
+     
+  if (letters.length === 0) return "not exist";
+  if (letters.length === 1) return letters.join(' ');
+  if (letters.length > 10) return "unable to be counted";
+    
+  for (let i = 0; i < letters.length; i++) {
+    const firstLetter = letters[i];
+    const restLetters = letters.slice(0, i).concat(letters.slice(i + 1));
+    const restLettersCombinations = recursion(restLetters.join(''));
+       
+  for (let j = 0; j < restLettersCombinations.length; j++) {
+    const combinationArray = [firstLetter].concat(restLettersCombinations[j]);
+    let newWord = combinationArray.join('')
+    if ( combinations.includes(newWord) ) continue;
+    else combinations.push(newWord);
+      } 
+  }
+   
+  return combinations;
+ }
+
+return `"${word}" ${recursion(word)}.`
+}
+   
+console.log(`generateCombinations = ${generateCombinations('man')}`);
