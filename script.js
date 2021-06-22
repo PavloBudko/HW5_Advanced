@@ -34,7 +34,7 @@ function getRandomArray(size, min, max) {
     } 
     let randomArray = [size]; 
     for(let i = 0; i < size; i++) 
-     randomArray[i]= Math.floor(Math.random() * (max - min) + min); 
+     randomArray[i] = Math.floor(Math.random() * (max - min) + min); 
     return randomArray; 
    }
  console.log(`getAverage(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) = ${getAverage(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2)}`)
@@ -94,25 +94,37 @@ function countPositiveNumbers(...numbers){
 
 //7.
 
-function getDevideFiveNumbers(...numbers) {  
-    const num = numbers.filter(Number.isInteger);  
-    if (Number.isNaN(num)){  
-      return 'Ви не ввели жодного цілого числа'  
-    } 
-    const devideFive = [];  
-  for (let i = 0; i < numbers.length; i++) {  
-    if (numbers[i] % 5 === 0) {  
-      devideFive.push(numbers[i]);  
-    }  
-  }  
-  return devideFive  
-  }  
-  console.log(`getDevideFiveNumbers(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) = ${getDevideFiveNumbers(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2)}`)
+function getDividedByFive(...numbers) {
+	if (!numbers.length) return "Помилка вводу!";
+	const dividedByFive = numbers.filter((number) => number % 5 == 0);
+	return dividedByFive;
+}
 
+console.log(`getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2) = ${getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2)}`);
 
 //8.
 
+function replaceBadWords(string, ...othersBadWords) {
+	if (!string) return "Нічого не введено!";
 
+	const badwordsArray = ["shit", "fuck", ...othersBadWords];
+	const arrayWords = string.replace(/ +/g, " ").trim().split(" ");
+	const arrayWithoutBadWords = arrayWords.map((word) => {
+		const badWorsToRepace = badwordsArray.filter((badWord) => {
+			return word.toLowerCase().includes(badWord);
+		});
+
+		badWorsToRepace.forEach((badWord) => {
+			const stars = "*".repeat(badWord.length);
+			word = word.toLowerCase().replaceAll(badWord, stars);
+		});
+
+		return word;
+	});
+	return arrayWithoutBadWords.join(" ");
+}
+
+console.log(replaceBadWords("Are you fucking kidding?", ""));
 
 //9.
 
@@ -124,4 +136,3 @@ function divideByThree(str) {
   console.log(`divideByThree ('Commander') = ${divideByThree('Commander')}`)
 
 //10.
-
